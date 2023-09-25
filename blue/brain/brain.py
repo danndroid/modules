@@ -142,4 +142,11 @@ def ID_rate2(A, distance=False, verbose=False):
 
     return np.round(id_rate,3)
 
-
+def matrix_from_vector(v, n):
+    matrix = np.zeros((n, n))
+    i_upp = np.triu_indices(n, 1)
+    matrix[i_upp] = v
+    i_low = np.tril_indices(n, -1)
+    matrix[i_low] = matrix.T[i_low]
+    
+    return matrix
